@@ -1,0 +1,16 @@
+# Gitignore file
+.settings
+.metadata
+build
+target
+logs
+opt
+.project
+.classpath
+.log
+.idea
+*.iml
+*.log
+*.orig
+*.zip
+.DS_Store

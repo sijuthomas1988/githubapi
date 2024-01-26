@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: GitHub API
+  logging:
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} | %-5level | %logger{1.} | %msg%n"
+    level:
+      org.springframework: ERROR
+      com.dcs.test.cdr: DEBUG,INFO
+
+server:
+  port: 8084
+  servlet:
+    context-path: /githubapi
+
+#Health and Metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics
+  metrics:
+    enabled: true
+
+springdoc:
+  packagesToScan: com.skr.redcare.githubapi
+  pathsToMatch: /v1/**
+
+app:
+  queryValidation: # used to validate the query passed to ensure invalid values are passed to the external request
+    sort:
+      - stars
+      - forks
+      - help-wanted-issues
+      - updated
+    order:
+      - asc
+      - desc
+    query:
+      - created
+      - language
+      - updated
+
+  typeValidation: # used to validate the type ot the query values being passed. For example date should be of format YYYY-mm-DD.Invalid formats will result in unwanted external request.
+    date:
+      - created
+    stringWithoutNumbers:
+      - language
+
+  githubApiDetails:
+    scheme: https
+    host: "api.github.com"
+    path: "search/repositories"
