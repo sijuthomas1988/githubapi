@@ -61,6 +61,12 @@ public class GithubDataController {
                                                                          @RequestParam(name = "page", defaultValue = "1") Integer page,
                                                                          @RequestParam(name = "perPage", defaultValue = "1") Integer perPage) throws GithubAPIException, ServiceException {
 
+        /**
+         * The rationale behind using a GET API opposed to a POST witha request body of query params as individual fields is
+         * due to future extensibilty as if there are more additional params to be added, then new fields needs to
+         * be created, which requires code change. Here we have validations and accepted fields as configs
+         * and any new types requires code change.
+         */
         // call service layer
         GithubDataResponse response = this.githubDataService.getRepositoryDetails(query, sort, order, page, perPage);
         log.info("Repository fetched sorted by " + sort + " in the " + order + " order");

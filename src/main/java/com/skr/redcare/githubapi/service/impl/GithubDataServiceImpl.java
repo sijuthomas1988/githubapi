@@ -29,6 +29,11 @@ public class GithubDataServiceImpl implements GithubDataService {
 
     @Override
     public GithubDataResponse getRepositoryDetails(String query, String sort, String order, Integer page, Integer perPage) throws ServiceException, GithubAPIException {
+        /**
+         * The rationale behind not using a mapper class or rather having two model classes one for unmarshalling
+         * and another for Response is that Github api returns a json string and solely for this task alone, have opted to unmarshall
+         * JSON string directly to the response class and have taken the field names returned from github api.
+         */
         Long startTime = System.currentTimeMillis();
         ResponseEntity apiResponse;
         ObjectMapper objectMapper = new ObjectMapper();
@@ -65,5 +70,4 @@ public class GithubDataServiceImpl implements GithubDataService {
 
         }
     }
-
 }
