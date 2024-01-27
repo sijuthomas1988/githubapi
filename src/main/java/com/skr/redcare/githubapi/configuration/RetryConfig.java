@@ -3,7 +3,7 @@ package com.skr.redcare.githubapi.configuration;
 import org.springframework.classify.Classifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.retry.RetryPolicy;
 import org.springframework.retry.policy.ExceptionClassifierRetryPolicy;
 import org.springframework.retry.policy.NeverRetryPolicy;
@@ -34,13 +34,13 @@ public class RetryConfig {
         return throwable -> {
             if (throwable instanceof HttpStatusCodeException) {
                 HttpStatusCodeException exception = (HttpStatusCodeException) throwable;
-                return getRetryPolicyForStatus(exception.getStatusCode());
+                return getRetryPolicyForStatus((HttpStatus) exception.getStatusCode());
             }
             return simpleRetryPolicy;
         };
     }
 
-    private RetryPolicy getRetryPolicyForStatus(HttpStatusCode httpStatus) {
+    private RetryPolicy getRetryPolicyForStatus(HttpStatus httpStatus) {
         if (httpStatus.equals(BAD_GATEWAY) || httpStatus.equals(SERVICE_UNAVAILABLE) || httpStatus.equals(INTERNAL_SERVER_ERROR) || httpStatus.equals(GATEWAY_TIMEOUT)) {
             return simpleRetryPolicy;
         }

@@ -33,19 +33,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorDetails handleServiceException(ServiceException e) {
-        ErrorDetails errorDetails = new ErrorDetails();
-        errorDetails.setTimeStamp(new Timestamp(System.currentTimeMillis()));
-        errorDetails.setDetails(e.getMessage());
+        ErrorDetails errorDetails = ErrorDetails.builder()
+                .details(e.getMessage())
+                .timeStamp(new Timestamp(System.currentTimeMillis()))
+                .build();
         return errorDetails;
     }
 
     @ExceptionHandler(GithubAPIException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ErrorDetails handleAPIException(GithubAPIException e) {
-        ErrorDetails errorDetails = new ErrorDetails();
-        errorDetails.setTimeStamp(new Timestamp(System.currentTimeMillis()));
-        errorDetails.setGithubAPIErrors(e.getGithubAPIErrorModel().getErrors());
-        errorDetails.setDetails(e.getMessage());
+        ErrorDetails errorDetails = ErrorDetails.builder()
+                .details(e.getMessage())
+                .timeStamp(new Timestamp(System.currentTimeMillis()))
+                .githubAPIErrors(e.getGithubAPIErrorModel().getErrors())
+                .build();
         return errorDetails;
     }
 }
