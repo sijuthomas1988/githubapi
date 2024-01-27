@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+/**
+ * Config class for metrics
+ */
 @Configuration
 @EnableAspectJAutoProxy
 public class RegistryConfig {

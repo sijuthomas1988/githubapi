@@ -9,7 +9,7 @@ spring:
       com.dcs.test.cdr: DEBUG,INFO
 
 server:
-  port: 8080
+  port: 8084
   servlet:
     context-path: /githubapi
 

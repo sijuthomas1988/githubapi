@@ -1,4 +1,4 @@
-package com.skr.redcare.githubapi.configuration;
+package com.skr.redcare.githubapi.model;
 
 import lombok.Data;
 

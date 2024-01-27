@@ -1,7 +1,7 @@
 package com.skr.redcare.githubapi.client;
 
 import com.skr.redcare.githubapi.configuration.AppConfig;
-import com.skr.redcare.githubapi.configuration.GithubAPIDetails;
+import com.skr.redcare.githubapi.model.GithubAPIDetails;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,7 +20,6 @@ import java.util.Set;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.HttpStatus.*;
 

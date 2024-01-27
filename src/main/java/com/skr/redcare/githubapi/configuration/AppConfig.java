@@ -1,12 +1,14 @@
 package com.skr.redcare.githubapi.configuration;
 
+import com.skr.redcare.githubapi.model.GithubAPIDetails;
+import com.skr.redcare.githubapi.model.QueryValidation;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
-
+/**
+ * Config class for loading app related configs;
+ */
 @Component
 @ConfigurationProperties("app")
 @Data
