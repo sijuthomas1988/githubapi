@@ -51,10 +51,6 @@ public class GithubAPIRetryableClient extends BaseRetryableApiClient {
     }
 
     private String replaceCommaWithSpaceInQuery(String query) {
-        if (query == null || query == "") {
-            return "";
-        } else {
-            return query.replace(",", "+");
-        }
+        return query.replace(",", "+");
     }
 }

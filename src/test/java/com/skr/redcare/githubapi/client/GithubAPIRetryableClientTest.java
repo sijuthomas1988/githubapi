@@ -50,7 +50,7 @@ public class GithubAPIRetryableClientTest {
         given(
                 restTemplate.exchange(any(String.class), eq(HttpMethod.GET), any(HttpEntity.class), eq(String.class), any(Object[].class))).willThrow(new HttpServerErrorException(httpStatus));
 
-        Assertions.assertThrows(HttpStatusCodeException.class, () -> githubAPIRetryableClient.callGithubSearchRepo(any(String.class), any(String.class), any(String.class), any(Integer.class), 1));
+        Assertions.assertThrows(HttpStatusCodeException.class, () -> githubAPIRetryableClient.callGithubSearchRepo("test,test", "test", "test", 1, 1));
 
         verify(restTemplate, times(2))
                 .exchange(any(String.class), eq(HttpMethod.GET), any(HttpEntity.class), eq(String.class), any(Object[].class));
